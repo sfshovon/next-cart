@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.from-bottom {
+  transform: translateY(100%);
+  transition: transform 0.5s; 
+}
+
+.group:hover .from-bottom {
+  transform: translateY(0%);
+}
+
+@keyframes appear-from-bottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
