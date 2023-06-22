@@ -1,5 +1,6 @@
 "use client"
 import OwnProduct from "@/components/OwnProduct";
+import Link from "next/link";
 
 async function getData() {
   const res = await fetch("http://localhost:3000/api/products")
@@ -9,6 +10,11 @@ async function getData() {
   }
  
   return res.json()
+}
+
+export const metadata = {
+  title: "Own Products",
+  description: "Own Products fetched from MongoDB"
 }
  
 const page = async () => {
@@ -24,7 +30,9 @@ const page = async () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-5 justify-around items-center gap-5">
         {data.map((product) => (
-          <OwnProduct key={product?.id} product={product} />
+          <Link href={`/products/${product?._id}`} key={product?._id}>
+            <OwnProduct product={product} />
+          </Link>
         ))}
       </div>
     </div>

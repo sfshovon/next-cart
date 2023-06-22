@@ -18,10 +18,10 @@ const Product = ({ product }) => {
 
   return (
     product && (
-      <div className="card h-96">
+      <div className="card h-96 border-2 border-zinc-900 rounded-3xl">
         <figure className="relative group">
           <img
-            className="w-full transition-transform duration-1200 ease-in transform-gpu hover:scale-110"
+            className="w-96 h-80 transition-transform duration-1200 ease-in transform-gpu hover:scale-110"
             src={productImage}
             alt="Product"
             loading="lazy"

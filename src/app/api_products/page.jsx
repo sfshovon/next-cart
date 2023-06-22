@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "../loading";
 
+export const metadata = {
+  title: "API Products",
+  description: "API Products fetched from an external API"
+}
+
 const getData = async (page) => {
   try {
     const limit = 10;

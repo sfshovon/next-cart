@@ -1,3 +1,4 @@
+import AuthProvider from '@/components/AuthProvider'
 import Navbar from '@/components/Navbar'
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -13,12 +14,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="px-4 lg:px-10">
-          <Navbar></Navbar>
-          <div className="pt-20">
-            {children}
+        <AuthProvider>
+          <div className="px-4 lg:px-10">
+            <Navbar></Navbar>
+            <div className="pt-20">
+              {children}
+            </div>
           </div>
-        </div>
+        </AuthProvider>
       </body>
     </html>
   )
