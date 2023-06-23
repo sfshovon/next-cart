@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
 
-const page = () => {
+const SignUp = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const router = useRouter();
   const [signUpError, setSignUpError] = useState('');
@@ -30,7 +31,7 @@ const page = () => {
   return (
     <div className="flex justify-center items-center">
       <div className="w-96 p-7 border border-zinc-900 rounded-2xl">
-        <h2 className="text-2xl text-center text-primary font-bold">Sign Up</h2>
+        <h2 className="text-2xl text-center text-success font-bold">Sign Up</h2>
         <form onSubmit={handleSubmit(handleSignUp)}>
           <div className="form-control w-full max-w-xs">
             <label className="label"> <span className="label-text font-semibold">Name</span></label>
@@ -63,13 +64,13 @@ const page = () => {
         </form>
         <div className="mt-4 flex justify-center items-center gap-2">
           <p className="text-center font-semibold">Already have an account?</p>
-          <Link className="text-secondary" href="/login">Please Login</Link>
+          <Link className="text-primary" href="/login">Please Login</Link>
         </div>
         <div className="divider font-semibold">OR</div>
-        <button className="btn btn-outline w-full" onClick={() => signIn("google")}>CONTINUE WITH GOOGLE</button>
+        <button className="btn btn-outline w-full" onClick={() => signIn("google")}><FcGoogle size={20}/> CONTINUE WITH GOOGLE</button>
       </div>
     </div>
   );
 };
 
-export default page;
+export default SignUp;

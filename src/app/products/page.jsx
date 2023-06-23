@@ -1,5 +1,5 @@
 "use client"
-import OwnProduct from "@/components/OwnProduct";
+import Product from "@/components/Product";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -19,7 +19,7 @@ export const metadata = {
   description: "Own Products fetched from MongoDB"
 }
  
-const page = async () => {
+const Products = async () => {
   const session = useSession();
   const router = useRouter();
   const data = await getData();
@@ -40,7 +40,7 @@ const page = async () => {
         <div className="grid grid-cols-1 md:grid-cols-5 justify-around items-center gap-5">
           {data.map((product) => (
             <Link href={`/products/${product?._id}`} key={product?._id}>
-              <OwnProduct product={product} />
+              <Product product={product} />
             </Link>
           ))}
         </div>
@@ -49,4 +49,4 @@ const page = async () => {
   }
 };
 
-export default page;
+export default Products;

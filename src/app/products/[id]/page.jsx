@@ -1,5 +1,5 @@
 "use client"
-import OwnProduct from "@/components/OwnProduct";
+import Product from "@/components/Product";
 
 async function getData(id) {
   const res = await fetch(`http://localhost:3000/api/products/${id}`, {
@@ -23,13 +23,13 @@ export async function generateMetadata({ params }) {
   }
 }
 
-const page = async ({ params }) => {
+const SingleProduct = async ({ params }) => {
   const data = await getData(params.id);
   return (
     <div className="flex justify-center items-center">
-      <OwnProduct product = {data} />
+      <Product product = {data} />
     </div>
   );
 };
 
-export default page;
+export default SingleProduct;

@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { FcGoogle } from 'react-icons/fc';
 
-const page = () => {
+
+const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const session = useSession();
   const router = useRouter();
@@ -59,13 +61,13 @@ const page = () => {
         </form>
         <div className="mt-4 flex justify-center items-center gap-2">
           <p className="text-center font-semibold">New to Health Hub?  </p>
-          <Link className="text-secondary" href="/signup">Create new account</Link>
+          <Link className="text-primary" href="/signup">Create new account</Link>
         </div>
         <div className="divider font-semibold">OR</div>
-        <button className="btn btn-outline w-full" onClick={() => signIn("google")}>CONTINUE WITH GOOGLE</button>
+        <button className="btn btn-outline w-full" onClick={() => signIn("google")}> <FcGoogle size={20}/> CONTINUE WITH GOOGLE</button>
       </div>
     </div>
   );
 };
 
-export default page;
+export default Login;

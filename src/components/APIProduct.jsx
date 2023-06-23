@@ -1,7 +1,7 @@
 import { Toaster, toast } from 'react-hot-toast';
 import { AiFillStar } from 'react-icons/ai';
 
-const Product = ({ product }) => {
+const APIProduct = ({ product }) => {
   const { name, productImage, variations, rating } = product;
   const totalPrice = parseInt(variations[0]?.price?.mrp);
   const discountedPrice = parseInt(variations[0]?.price?.discountedPrice);
@@ -75,4 +75,4 @@ const Product = ({ product }) => {
   );
 };
 
-export default Product;
+export default APIProduct;

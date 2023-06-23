@@ -23,7 +23,7 @@ const getData = async (page) => {
   }
 };
 
-const Products = () => {
+const APIProducts = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(0);
 
@@ -69,4 +69,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default APIProducts;
