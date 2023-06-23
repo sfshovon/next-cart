@@ -1,17 +1,34 @@
 "use client"
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const page = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const session = useSession();
+  const router = useRouter();
   console.log(session)
+  const [loginError, setLoginError] = useState('');
 
-  const handleLogin = (data) => {
-    console.log(data)
-    
-  }
+  useEffect(() => {
+    if (session.status === "authenticated") {
+      router?.push("/products?success=Account Has Successfully Logged In");
+    }
+  }, [session]);
+
+  const handleLogin = async (data) => {
+    const email = data?.email;
+    const password = data?.password;
+    try {
+      signIn("credentials", { email, password });
+      
+    } 
+    catch (error) {
+      setLoginError(error.message);
+    }
+  };
 
   return (
     <div className="flex justify-center items-center">
@@ -32,13 +49,13 @@ const page = () => {
                   minLength: { value: 6, message: "Password must be 6 characters or longer" }
               })}
             />
-            <label className="label"> <span className="mt-1 label-text font-semibold">Forget Password?</span></label>
+            {/* <label className="label"> <span className="mt-1 label-text font-semibold">Forget Password?</span></label> */}
             {errors.password && <p className="text-red-600">{errors.password?.message}</p>}
           </div>
           <input className="mt-2 btn btn-accent w-full" value="Login" type="submit" />
-          {/* <div className="mt-2">
+          <div className="mt-2">
             {loginError && <p className="text-red-600 font-semibold">{loginError}</p>}
-          </div> */}
+          </div>
         </form>
         <div className="mt-4 flex justify-center items-center gap-2">
           <p className="text-center font-semibold">New to Health Hub?  </p>

@@ -1,14 +1,26 @@
+"use client"
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 
 const Navbar = () => {
+  const session = useSession();
   const menuItems = (
     <>
       <li><Link href="/">Home</Link></li>
       <li><Link href="/api_products">API Products</Link></li>
-      <li><Link href="/products">Own Products</Link></li>
-      <li><Link href="/login">Login</Link></li>
+      {
+        session.status === "authenticated" && 
+        <>
+          <li><Link href="/products">Own Products</Link></li>
+          <li><Link href="/login" onClick={signOut}>Logout</Link></li>
+        </>
+      }
+      {
+        session.status === "unauthenticated" && 
+        <li><Link href="/login">Login</Link></li>
+      }
     </>
   );
 

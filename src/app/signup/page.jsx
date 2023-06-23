@@ -10,11 +10,8 @@ const page = () => {
   const router = useRouter();
   const [signUpError, setSignUpError] = useState('');
 
- 
-
   const handleSignUp = async (data) => {
     console.log(data.name, data.email, data.password)
-
     try {
       const res = await fetch("api/auth/signup", {
         method: "POST",
@@ -28,7 +25,6 @@ const page = () => {
     catch(error) {
       setSignUpError(error.message)
     }
-
   }
 
   return (
