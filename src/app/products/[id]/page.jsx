@@ -13,16 +13,6 @@ async function getData(id) {
   return res.json();
 }
 
-export async function generateMetadata({ params }) {
-  const data = await getData(params.id);
-  return {
-    title: data?.name,
-    description: `Price: ${data?.mrp},
-                  Discount Price: ${data?.discountPrice},
-                  Rating: ${data?.rating}`
-  }
-}
-
 const SingleProduct = async ({ params }) => {
   const data = await getData(params.id);
   return (

@@ -54,7 +54,7 @@ const Login = () => {
             {/* <label className="label"> <span className="mt-1 label-text font-semibold">Forget Password?</span></label> */}
             {errors.password && <p className="text-red-600">{errors.password?.message}</p>}
           </div>
-          <input className="mt-2 btn btn-accent w-full" value="Login" type="submit" />
+          <input className="mt-4 btn btn-accent w-full" value="Login" type="submit" />
           <div className="mt-2">
             {loginError && <p className="text-red-600 font-semibold">{loginError}</p>}
           </div>

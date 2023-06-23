@@ -14,11 +14,6 @@ async function getData() {
   return res.json()
 }
 
-export const metadata = {
-  title: "Own Products",
-  description: "Own Products fetched from MongoDB"
-}
- 
 const Products = async () => {
   const session = useSession();
   const router = useRouter();
